@@ -1,0 +1,59 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>HIT & RUN!</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+	<script type="text/javascript" src="ball.js"></script>
+	<script type="text/javascript" src="animate.js"></script>
+	<script type="text/javascript" src="control.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="infoBoard">
+		<p id="message">Info</p>
+	</div>
+	<div id="displayBoard">
+		<canvas id="zone" height="500px" width="1000px"></canvas>
+	</div>
+	<div id="controlBoard">
+		<button id="configButton">设置</button>
+		<div id="config">
+			<div id="board" class="configItem" style="display:none">
+				<h3>模式</h3>
+				<div id="mode" class="setting">
+					<input type="radio" id="smallMode" checked="true" name="r1">小球</input>
+					<input type="radio" id="newtonMode" name="r1">牛顿摆</input>
+					<input type="radio" id="threeball" name="r1">受力分析</input>
+					<input type="radio" id="snooker" name="r1">斯诺克</input>
+				</div>
+				<h3>属性<span style="font-size:6px; color:gray">(0值为随机)</span></h3>
+				<div id="number" class="setting">
+					数量：<input id="amount" type="number" value="0" min="1" style="width: 50px">　　</input>
+					质量：<input id="mass" type="number" value="0" min="1" style="width: 50px">　　</input>
+					半径：<input id="radius" type="number" value="0" min="1" style="width: 50px">　　</input>
+				</div>
+				<h3>模拟外力<span style="font-size:6px; color:gray">(建议同时把动能损失设置为非零)</span></h3>
+				<div id="gravity" class="setting">
+					x：<input id="directx" type="range" value="0" min="-10" max="10" onchange="$('#directxvalue').text(this.value)" style="width: 250px; height: 12px"><span id="directxvalue" width="50px">0</span></input><br/>
+					y：<input id="directy" type="range" value="0" min="-10" max="10" onchange="$('#directyvalue').text(this.value)" style="width: 250px; height: 12px"><span id="directyvalue" width="50px">0</span></input>
+				</div>
+				<h3>模拟动能损失<span style="font-size:6px; color:gray">(仅在小球模式下生效)</span></h3>
+				<div id="energy" class="setting">
+					不损失<input id="rv" type="range" value="0" min="0" max="100" onchange="$('#rvvalue').text(this.value)" style="width: 200px; height: 12px">完全损失<span id="rvvalue" width="50px" style="margin-left:1em">0</span></input>
+				</div>
+				<h3>碰撞检测精度<span style="font-size:6px; color:gray">(建议自动切换)</span></h3>
+				<div id="checkCollisionMode" class="setting">
+					<input type="radio" id="auto" checked="true" name="r2">自动切换</input>
+					<input type="radio" id="normal" name="r2">一般</input>
+					<input type="radio" id="pro" name="r2">精细(CPU够强就选这个)</input>
+				</div>
+			</div>
+			<div id="confireButton" class="configItem" style="display:none">
+				<button id="cancel">取消修改</button>
+				<button id="confirm">确定并重新开始</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
